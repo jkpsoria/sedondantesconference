@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+    <head>
+         {% load static %}
+         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+         <script src = "https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!--  <script src ="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+         <!-- <script src ="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>             
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+         <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+         <script src = "https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!--  <script src ="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+         <script src ="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>             
+         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+         <script>
+                 $(document).ready(function() {
+                     $('#example').DataTable();
+                 });
+         </script>
+ 
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="image/favicon2.png" type="image/png">
+        <title>Reservation Room</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    </head>
+    <body style="background-color:gray">
+        <!--================Header Area =================-->
+        <header class="header_area">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="{% static 'image/sedonlogo.png' %}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                      <ul class="nav navbar-nav menu_nav ml-auto">
+                          <li class="nav-item active"><a class="nav-link" href="{% url 'conferenceroom:my_admin_index_view' %}">Home</a></li> 
+                          <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_admin_about_view' %}">About us</a></li>
+                          <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_admin_view' %}">Services</a></li>
+                          <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_admin_contact_view' %}">Contact Us</a></li>
+                    <!--      <li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li>-->
+                    {% for userdetails in userdetails %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_admin_dashboard_view' %}">{{userdetails.username}}</a></li>
+                    {% endfor %} 
+                          <li class="nav-item submenu dropdown">
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                              <ul class="dropdown-menu">
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_aboutuswuser_view' %}">About us</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_accomodationwuser_view' %}">Services</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_contactwuser_view' %}">Contact Us</a></li>
+                                  {% for userdetails in userdetails %}
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_signin_view' %}">{{userdetails.username}}</a></li>
+                                  {% endfor %} 
+                              </ul>
+                    </div> 
+                </nav>
+            </div>
+        </header>
+        <!--================Header Area =================-->
+        
+        <!--================Breadcrumb Area =================-->
+        <section class="breadcrumb_area">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle">Welcome</h2>
+                    <ol class="breadcrumb">                
+                        <li class="active">Contact Us</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!--================Breadcrumb Area =================-->
+        <!------USER DETAILS------->
+        <br>
+        <center>
+            <div>
+                <h5>Profile</h5>
+            </div>   
+        </center>  
+<br> 
+        <center>
+          <br>
+          <table class="table table-bordered table-striped" id="example" class="table table-dark" color="white" style="width:61%">
+              <thead>
+                <tr>
+                 <tr>
+                              <th>Username</th>
+                              <th>Password</th>
+                              <th>Email Address</th>
+                              <th>Fist Name</th>
+                              <th>Last Name</th>
+                              <th>Address</th>
+                              <th>Contact Number</th>
+                              <th>Action</th>
+                </tr>
+               </thead>
+                      <tbody id="myTable">              
+                              {% for userdetails in userdetails %}          
+                          <tr>
+                              <td>{{userdetails.username}}</td>
+                              <td>{{userdetails.password}}</td>
+                              <td>{{userdetails.emailadd}}</td>
+                              <td>{{userdetails.fname}}</td>
+                              <td>{{userdetails.lname}}</td>
+                              <td>{{userdetails.address}}</td>
+                              <td>{{userdetails.contactNum}}</td>
+                            <td>
+                          
+                                <button href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{userdetails.username}}" data-whatever="@mdo data-placement=" title="Update">Update<i class="fa fa-edit" aria-hidden="true"></i></button>
+
+
+                                <div class="modal fade" id="exampleModal-{{userdetails.username}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form method="POST">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+
+                                            <label for="recipient-name" class="col-form-label">Username</label>
+                                                <input type="text" name="username" value="{{userdetails.username}}" class="form-control" id="username">
+                                            <label for="recipient-name" class="col-form-label">Password</label>
+                                                <input type="text" name="password" value="{{userdetails.password}}" class="form-control" id="password">
+                                            <label for="recipient-name" class="col-form-label">Email Address</label>
+                                                <input type="text" name="emailadd" value="{{userdetails.emailadd}}" class="form-control" id="emailadd">
+                                            <label for="recipient-name" class="col-form-label">First Name</label>
+                                                <input type="text" name="fname" value="{{userdetails.fname}}" class="form-control" id="fname">
+                                            <label for="recipient-name" class="col-form-label">Last Name</label>
+                                                <input type="text" name="lname" value="{{userdetails.lname}}" class="form-control" id="lname">
+                                            <label for="recipient-name" class="col-form-label">Address</label>
+                                                <input type="text" name="address" value="{{userdetails.address}}" class="form-control" id="address">
+                                            <label for="recipient-name" class="col-form-label">Contact Number</label>
+                                                <input type="text" name="contactNum" value="{{userdetails.contactNum}}" class="form-control" id="contactNum">
+                                            </div>
+
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                          <button type="submit" id="BtnUpdate_user" name="BtnUpdate_user" class="btn btn-warning">UPDATE</button>
+                                        </div>
+          
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <!-- Button trigger modal -->
+            <a href="button" href="#" class="btn btn-warning"  data-target="#Modal-{{userdetails.id}}"data-toggle="modal">Delete<i class="fa fa-trash" aria-hidden="true"></i></a>
+              </div>
+                                    
+          <!-- Modal HTML -->
+          <div id="Modal-{{userdetails.id}}" class="modal fade">
+              <div class="modal-dialog modal-confirm">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <div class="icon-box">
+                              <i class="material-icons">&#xE5CD;</i>
+                          </div>              
+                          <h4 class="modal-title">Delete Account?</h4>  
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                <form method="POST">
+                    {% csrf_token %}
+          
+                      <div class="modal-body">
+                          <input type="text" name="id" value={{userdetails.id}} hidden>
+                <h5> Are you sure you want to delete <b>{{userdetails.id}}</b>?</h5> 
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                          <button type="submit" id="BtnDelete_user" name="BtnDelete_user" class="btn btn-danger">Delete</button>
+                      </div>
+                  </div>
+              </div>
+          </div>  
+                          </td> 
+                       </tr>
+          
+                          {% endfor %}
+                        </center>
+                      </tbody>
+                    </table>
+                <!------USER DETAILS------->
+   <!--================Dashboard Area =================-->
+<br>
+<center>
+    <div>
+        <h5>RESERVATION DATES</h5>
+    </div>   
+</center>  
+<br> 
+<center>
+  <br>
+  <table class="table table-bordered table-striped" id="example" class="table table-dark" color="white" style="width:61%">
+      <thead>
+        <tr>
+            <tr>
+                <th>Date</th>      
+                <th>Number of Booking</th>
+            </tr>
+      </thead>
+        <tbody id="myTable">   
+                {%for count in count_date%}
+                    <tr>     
+                      <td>{{count.dateofuse}}</td>
+                      <td>{{count.count}}</td>
+                    </tr>
+                  {% endfor %} 
+                  </tr>
+              </tbody>
+            </table>
+  
+
+  
+
+<!--ADD ROOM DASHBOARD AREA-->
+
+        <!--ADD ROOOM DASHBOARD AREA-->
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="vendors/isotope/isotope-min.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="js/gmaps.min.js"></script>
+        <!-- contact js -->
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/contact.js"></script>
+        <script src="js/custom.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+            });
+    </script>
+        <script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+            </script>
+            <script>
+            // Get the modal
+            var modal = document.getElementById('#modalUpdate-{{rooms.roomnumber}}');
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+            
+            $('#myModal').on('shown.bs.modal', function () {
+              $('#myInput').trigger('focus')
+            })
+            </script>
+            
+            <style type='text/css'>
+                        h5,h4{
+                            font-family: sans-serif;
+                            color: black;
+                             font-weight: bold;
+                          
+                        }
+                        .bhome{
+                            
+                            right: 300px;
+            
+                        }
+                       
+                         table{
+                            text-align: center;
+                           color: white;
+                           background: yellow;
+                        }
+                        label{
+                            font-family: sans-serif;
+                            color: black;
+                            font-weight: bold;
+                          
+                        }
+                        #roomtype {
+              background-color: #f6f6f6;
+              border: none;
+              color: #0d0d0d;
+              
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 5px;
+              width: 85%;
+              border: 2px solid #f6f6f6;
+              -webkit-transition: all 0.5s ease-in-out;
+              -moz-transition: all 0.5s ease-in-out;
+              -ms-transition: all 0.5s ease-in-out;
+              -o-transition: all 0.5s ease-in-out;
+              transition: all 0.5s ease-in-out;
+              -webkit-border-radius: 5px 5px 5px 5px;
+              border-radius: 5px 5px 5px 5px;
+            }
+            
+            #roomtype:focus {
+              background-color: #b4b4b4;
+              border-bottom: 2px solid #868e96;
+            }
+            
+            #roomtype:placeholder {
+              color: #cccccc;
+            }
+
+            #slot {
+              background-color: #f6f6f6;
+              border: none;
+              color: #0d0d0d;
+             
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 5px;
+              width: 85%;
+              border: 2px solid #f6f6f6;
+              -webkit-transition: all 0.5s ease-in-out;
+              -moz-transition: all 0.5s ease-in-out;
+              -ms-transition: all 0.5s ease-in-out;
+              -o-transition: all 0.5s ease-in-out;
+              transition: all 0.5s ease-in-out;
+              -webkit-border-radius: 5px 5px 5px 5px;
+              border-radius: 5px 5px 5px 5px;
+            }
+            
+            #slot:focus {
+              background-color: #b4b4b4;
+              border-bottom: 2px solid #868e96;
+            }
+            
+            #slot:placeholder {
+              color: #cccccc;
+            }
+                    </style>
+
+    </body>
+</html>

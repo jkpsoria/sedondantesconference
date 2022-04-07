@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+    <head>
+         {% load static %}
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="image/favicon2.png" type="image/png">
+        <title>Reservation Room</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    </head>
+    <body style="background-color:black">
+        <!--================Header Area =================-->
+        <header class="header_area">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="{% static 'image/sedonlogo.png' %}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item "><a class="nav-link" href="{% url 'conferenceroom:my_index_view' %}">Home</a></li> 
+                          <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_aboutus_view' %}">About us</a></li>
+                          <li class="nav-item active"><a class="nav-link" href="{% url 'conferenceroom:my_accomodation_view' %}">Services</a></li>
+                          <li class="nav-item  "><a class="nav-link" href="{% url 'conferenceroom:my_contact_view' %}">Contact Us</a></li>
+                    <!--      <li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li>-->
+                          <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_registration_view' %}">Register</a></li>
+                          <li class="nav-item submenu dropdown">
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                              <ul class="dropdown-menu">
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_aboutus_view' %}">About us</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_accomodation_view' %}">Services</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_contact_view' %}">Contact Us</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="{% url 'conferenceroom:my_signin_view' %}">Join Now</a></li>
+                              </ul>
+                    </div> 
+                </nav>
+            </div>
+        </header>
+        <!--================Header Area =================-->
+        
+        <!--================Breadcrumb Area =================-->
+        <section class="breadcrumb_area">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle">Welcome</h2>
+                    <ol class="breadcrumb">                
+                        <li class="active">Add Room</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!--================Breadcrumb Area =================-->
+        
+        <!--================Reservation Area =================-->
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+              <!-- Tabs Titles -->
+          
+              <!-- Icon -->
+              <div class="fadeIn first">
+                  <br>
+                <h3>Add Room</h3>
+              </div>
+          
+              <!-- Login Form -->
+              <form id = "form" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" id="roomnumber" class="fadeIn first" name="roomnumber"  placeholder="Room Number">
+                <select name="roomtype" id ="roomtype">
+                    <option value selected disabled=true>Choose Room Type</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+                
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+              </form>
+            
+            </div>
+          </div>
+        <!--================Reservation Area =================--> 
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="vendors/isotope/isotope-min.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="js/gmaps.min.js"></script>
+        <!-- contact js -->
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/contact.js"></script>
+        <script src="js/custom.js"></script>
+        <style>
+            /* STRUCTURE */
+            
+            .wrapper {
+              display: flex;
+              align-items: center;
+              flex-direction: column; 
+              justify-content: center;
+              width: 100%;
+              min-height: 100%;
+              padding: 20px;
+            }
+            
+            #formContent {
+              -webkit-border-radius: 10px 10px 10px 10px;
+              border-radius: 10px 10px 10px 10px;
+              background: #fff;
+              padding: 30px;
+              width: 90%;
+              max-width: 450px;
+              position: relative;
+              padding: 0px;
+              -webkit-box-shadow: 0 30px 60px 0 rgba(255, 255, 255, 0.3);
+              box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+              text-align: center;
+            }
+            
+            #formFooter {
+              background-color: #f6f6f6;
+              border-top: 1px solid #dce8f1;
+              padding: 25px;
+              text-align: center;
+              -webkit-border-radius: 0 0 10px 10px;
+              border-radius: 0 0 10px 10px;
+            }
+            
+            
+            
+            /* TABS */
+            
+            h2.inactive {
+              color: #cccccc;
+            }
+            
+            h2.active {
+              color: #0d0d0d;
+              border-bottom: 2px solid #5fbae9;
+            }
+            
+            
+            
+            /* FORM TYPOGRAPHY*/
+            
+            input[type=button], input[type=submit], input[type=reset]  {
+              background-color: #222222;
+              border: none;
+              color: white;
+              padding: 15px 80px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              text-transform: uppercase;
+              font-size: 13px;
+              -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+              box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+              -webkit-border-radius: 5px 5px 5px 5px;
+              border-radius: 5px 5px 5px 5px;
+              margin: 5px 20px 40px 20px;
+              -webkit-transition: all 0.3s ease-in-out;
+              -moz-transition: all 0.3s ease-in-out;
+              -ms-transition: all 0.3s ease-in-out;
+              -o-transition: all 0.3s ease-in-out;
+              transition: all 0.3s ease-in-out;
+            }
+            
+            input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+              background-color: #868e96;
+            }
+            
+            input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+              -moz-transform: scale(0.95);
+              -webkit-transform: scale(0.95);
+              -o-transform: scale(0.95);
+              -ms-transform: scale(0.95);
+              transform: scale(0.95);
+            }
+            
+            input[type=text] {
+              background-color: #f6f6f6;
+              border: none;
+              color: #0d0d0d;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 5px;
+              width: 85%;
+              border: 2px solid #f6f6f6;
+              -webkit-transition: all 0.5s ease-in-out;
+              -moz-transition: all 0.5s ease-in-out;
+              -ms-transition: all 0.5s ease-in-out;
+              -o-transition: all 0.5s ease-in-out;
+              transition: all 0.5s ease-in-out;
+              -webkit-border-radius: 5px 5px 5px 5px;
+              border-radius: 5px 5px 5px 5px;
+            }
+            
+            input[type=text]:focus {
+              background-color: #b4b4b4;
+              border-bottom: 2px solid #868e96;
+            }
+            
+            input[type=text]:placeholder {
+              color: #cccccc;
+            }
+            
+            input[type=password] {
+              background-color: #f6f6f6;
+              border: none;
+              color: #000000;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 5px;
+              width: 85%;
+              border: 2px solid #f6f6f6;
+              -webkit-transition: all 0.5s ease-in-out;
+              -moz-transition: all 0.5s ease-in-out;
+              -ms-transition: all 0.5s ease-in-out;
+              -o-transition: all 0.5s ease-in-out;
+              transition: all 0.5s ease-in-out;
+              -webkit-border-radius: 5px 5px 5px 5px;
+              border-radius: 5px 5px 5px 5px;
+            }
+            
+            input[type=password]:focus {
+              background-color: #fff;
+              border-bottom: 2px solid #868e96;
+            }
+            
+            input[type=password]:placeholder {
+              color: #cccccc;
+            }
+            
+            
+            .fget{
+                 color: #000000;
+            
+            }
+            
+            
+            /* ANIMATIONS */
+            
+            /* Simple CSS3 Fade-in-down Animation */
+            .fadeInDown {
+              -webkit-animation-name: fadeInDown;
+              animation-name: fadeInDown;
+              -webkit-animation-duration: 1s;
+              animation-duration: 1s;
+              -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+              background-color: #b4b4b4;
+            }
+            
+            @-webkit-keyframes fadeInDown {
+              0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+              }
+              100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+              }
+            }
+            
+            @keyframes fadeInDown {
+              0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+              }
+              100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+              }
+            }
+            
+            /* Simple CSS3 Fade-in Animation */
+            @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+            @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+            @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+            
+            .fadeIn {
+              opacity:0;
+              -webkit-animation:fadeIn ease-in 1;
+              -moz-animation:fadeIn ease-in 1;
+              animation:fadeIn ease-in 1;
+            
+              -webkit-animation-fill-mode:forwards;
+              -moz-animation-fill-mode:forwards;
+              animation-fill-mode:forwards;
+            
+              -webkit-animation-duration:1s;
+              -moz-animation-duration:1s;
+              animation-duration:1s;
+            }
+            
+            .fadeIn.first {
+              -webkit-animation-delay: 0.4s;
+              -moz-animation-delay: 0.4s;
+              animation-delay: 0.4s;
+            }
+            
+            .fadeIn.second {
+              -webkit-animation-delay: 0.6s;
+              -moz-animation-delay: 0.6s;
+              animation-delay: 0.6s;
+            }
+            
+            .fadeIn.third {
+              -webkit-animation-delay: 0.8s;
+              -moz-animation-delay: 0.8s;
+              animation-delay: 0.8s;
+            }
+            
+            .fadeIn.fourth {
+              -webkit-animation-delay: 1s;
+              -moz-animation-delay: 1s;
+              animation-delay: 1s;
+            }
+            
+            /* Simple CSS3 Fade-in Animation */
+            .underlineHover:after {
+              display: block;
+              left: 0;
+              bottom: -10px;
+              width: 0;
+              height: 2px;
+              background-color: #56baed;
+              content: "";
+              transition: width 0.2s;
+            }
+            
+            .underlineHover:hover {
+              color: #000000;
+            }
+            
+            .underlineHover:hover:after{
+              width: 100%;
+            }
+            
+            
+            
+            /* OTHERS */
+            
+            *:focus {
+                outline: none;
+            } 
+            
+            #icon {
+              width:60%;
+            }
+            
+            </style>
+    
+    </body>
+</html>
